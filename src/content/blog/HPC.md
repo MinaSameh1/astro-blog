@@ -45,13 +45,13 @@ of how varied interventions might affect the global climate.
 
 Now that we see the problems, lets talk about the solution, **Parallel Systems**
 
-Up to now, performance increases are due to increasing density of transistors, 
+Up to now, performance increases are due to increasing density of transistors,
 but there are inherent problems.
 
-* Smaller Transistors = Faster processors.
-* Faster Processors = Increased Power Consumption
-* Increased Power Consumption = Increased Heat
-* Increased Heat = Unreliable processors
+- Smaller Transistors = Faster processors.
+- Faster Processors = Increased Power Consumption
+- Increased Power Consumption = Increased Heat
+- Increased Heat = Unreliable processors
 
 Thus we moved away from single core systems to multicore processors, however
 multicores don't help if the programmers aren't aware of them or don't know how to use them,
@@ -62,7 +62,14 @@ Why we need parallel programs
 </h5>
 
 Running multiple instances of a serial program often isn't useful,
-it can be done be in a way that benefits the program (Nodejs Clusters and PM2) 
+it can be done be in a way that benefits the program (Nodejs Clusters and PM2)
 However that isn't always the case and some programs cannot be scaled in the same way node does.
+Like in games you cannot run multiple instances of a game, what you want is for it
+to run faster.
 
+That is why one must **rewrite** serial programs so that they are parallel  
+Or write Translation Programs that convert serial ones into parallel.
 
+_Note: This is very difficult to do, and success will be limited._
+
+Also Sometimes the answer is to step back and devise an entirely new algorithm
