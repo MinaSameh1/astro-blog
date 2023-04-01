@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "@src/consts";
+import { BASE_URL, SITE_TITLE } from "@src/consts";
 ---
 
 <header>
@@ -8,9 +8,9 @@ import { SITE_TITLE } from "@src/consts";
 		{SITE_TITLE}
 	</h2>
 	<nav>
-		<HeaderLink href="/astro-blog/">Home</HeaderLink>
-		<HeaderLink href="/astro-blog/blog">Blog</HeaderLink>
-		<HeaderLink href="/astro-blog/about">About</HeaderLink>
+		<HeaderLink href={`${BASE_URL}/`}>Home</HeaderLink>
+		<HeaderLink href={`${BASE_URL}/blog`}>Blog</HeaderLink>
+		<HeaderLink href={`${BASE_URL}/about`}>About</HeaderLink>
 		<HeaderLink href="https://github.com/MinaSameh1" target="_blank">
 			GitHub
 		</HeaderLink>
