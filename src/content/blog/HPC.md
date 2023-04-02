@@ -1,12 +1,14 @@
 ---
-title: "HPC-first"
+title: "HPC First article"
 description: "What is High Performance Computing?"
 pubDate: "2023-04-01"
+updatedDate: "2023-04-02"
 ---
 
 <p>
 I have been taking an <abbr title="High Performance Computing">HPC</abbr> course during my master's, so why not write about it?
-I will talk about what is High Performance Computing and its use cases
+I will talk about what is High Performance Computing and its use cases.
+_Note: This is my first time writing articles._
 </p>
 
 <h2>
