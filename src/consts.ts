@@ -4,4 +4,7 @@
 export const SITE_TITLE = "My Personal Blog";
 export const SITE_DESCRIPTION =
   "My name is Mina Sameh, I am a backend developer. I write about any topics that catch my eye in this blog.";
-export const BASE_URL = "/";
+export const BASE_URL = "";
+
+export const GITHUB_URL = "https://github.com/Minasameh1";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/mina-sameh-dev/";

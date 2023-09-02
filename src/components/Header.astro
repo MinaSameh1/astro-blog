@@ -1,26 +1,25 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { BASE_URL, SITE_TITLE } from "@src/consts";
+import { BASE_URL, GITHUB_URL, LINKEDIN_URL, SITE_TITLE } from "@src/consts";
 ---
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href={`${BASE_URL}/`}>Home</HeaderLink>
-		<HeaderLink href={`${BASE_URL}/blog`}>Blog</HeaderLink>
-		<HeaderLink href={`${BASE_URL}/about`}>About</HeaderLink>
-		<HeaderLink href="https://github.com/MinaSameh1" target="_blank">
-			GitHub
-		</HeaderLink>
-	</nav>
+  <h2>
+    {SITE_TITLE}
+  </h2>
+  <nav>
+    <HeaderLink href={`${BASE_URL}/`}>Home</HeaderLink>
+    <HeaderLink href={`${BASE_URL}/blog`}>Blog</HeaderLink>
+    <HeaderLink href={`${BASE_URL}/about`}>About</HeaderLink>
+    <HeaderLink href={`${GITHUB_URL}`}  target="_blank">GitHub</HeaderLink>
+    <HeaderLink href={`${LINKEDIN_URL}`} target="_blank">Linkedin</HeaderLink>
+  </nav>
 </header>
 <style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
 </style>
