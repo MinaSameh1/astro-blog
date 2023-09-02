@@ -16,9 +16,11 @@ const socials = [
 ---
 
 <footer>
-  &copy; {today.getFullYear()} Mina Sameh Wadie. All rights reserved.
+  <span>
+    &copy; {today.getFullYear()} Mina Sameh Wadie. All rights reserved.
+  </span>
   <br />
-   <span>Built with <a href="https://astro.build/">Astro</a>.</span>
+  <span>Built with <a href="https://astro.build/">Astro</a>.</span>
   <ul>
     {
       socials.map((item) => (
@@ -36,24 +38,24 @@ const socials = [
     footer a {
     }
     */
-
     footer {
       /* background-color: orange; */
+      overflow: visible;
       position: absolute;
       border-top: 1px solid #eaeaea;
       left: 0;
       bottom: 0;
-      height: 50px;
       width: 100%;
-      padding: 25px;
+      padding: 10px;
       text-align: center;
     }
-    /* Make the ul list horizontal */ 
+
+    /* Make the ul list horizontal */
     footer ul {
       display: flex;
       justify-content: center;
       list-style: none;
-      margin: 5;
+      padding: 5;
     }
 
     footer li {
