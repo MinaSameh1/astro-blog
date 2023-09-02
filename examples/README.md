@@ -1,10 +1,15 @@
-# Personal Blog Using Astro
+# Astro Starter Kit: Blog
 
-I mostly write about topics I come in contact with
+```
+npm create astro@latest -- --template blog
+```
 
-## Other
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
 
-These came from the template itself, I leave them here for now 😀
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
 
 ![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
 
@@ -44,12 +49,6 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
-To create a project using the template
-
-```
-npm create astro@latest -- --template blog
-```
-
 All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                           |
@@ -68,3 +67,4 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+# astro-blog
