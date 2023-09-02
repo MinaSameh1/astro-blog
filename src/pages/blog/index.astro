@@ -40,7 +40,6 @@ const posts = (await getCollection("blog")).sort(
         <ul>
           {
             posts.map((post) => {
-              console.log(post.data);
               return (
                 !post.data.hide && (
                   <li>
