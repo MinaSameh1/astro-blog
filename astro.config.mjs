@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://minasameh1.github.io",
+  site: "https://www.minasameh.dev",
   base: BASE_URL,
   integrations: [mdx(), sitemap()],
 });
