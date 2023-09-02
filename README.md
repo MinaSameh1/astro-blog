@@ -2,6 +2,10 @@
 
 I mostly write about topics I come in contact with
 
+## Notes to self:
+
+I am using astro-icons so use [this](https://icon-sets.iconify.design/) to search for icons
+
 ## Other
 
 These came from the template itself, I leave them here for now 😀

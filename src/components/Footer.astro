@@ -1,16 +1,35 @@
 ---
 import { GITHUB_URL, LINKEDIN_URL } from "@src/consts";
+import { Icon } from "astro-icon";
 const today = new Date();
+
+const socials = [
+  {
+    link: LINKEDIN_URL,
+    icon: "logos:linkedin-icon",
+  },
+  {
+    link: GITHUB_URL,
+    icon: "logos:github-icon",
+  },
+];
 ---
 
 <footer>
   &copy; {today.getFullYear()} Mina Sameh Wadie. All rights reserved.
   <br />
-  Built with <a href="https://astro.build/">Astro</a>.
-  <!-- <p> -->
-  <!--   <a href={LINKEDIN_URL}>LinkedIn</a> |{" "} -->
-  <!--   <a href={GITHUB_URL}>GitHub</a> -->
-  <!-- </p> -->
+   <span>Built with <a href="https://astro.build/">Astro</a>.</span>
+  <ul>
+    {
+      socials.map((item) => (
+        <li>
+          <a href={item.link}>
+            <Icon width={40} name={item.icon} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 
   <style>
     /*
@@ -28,6 +47,17 @@ const today = new Date();
       width: 100%;
       padding: 25px;
       text-align: center;
+    }
+    /* Make the ul list horizontal */ 
+    footer ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 5;
+    }
+
+    footer li {
+      margin: 0 10px;
     }
 
     @media (max-width: 768px) {
