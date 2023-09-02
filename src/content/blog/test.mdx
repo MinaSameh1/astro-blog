@@ -1,5 +1,5 @@
 ---
-title: "Test Article"
+title: "Test Code Highlighting Article"
 description: "This is to see if the blog is working 😀"
 pubDate: "2023-09-01"
 updatedDate: "2023-09-02"
@@ -14,11 +14,23 @@ This is a page to see if everything is fine.
 
 ```ts
 
-// code? 
-const item = 5
+// ts code? 
+const item: number = 5
 
 // Code highlighting should work fine
 console.log(item)
+```
+
+```tsx 
+// React? 
+import React from 'react'
+
+export const testFunc = () => {
+  return (
+      <h1 className="color: red;">test</h1>
+      <p>Test highlighting</p>
+      )
+}
 ```
 
 example _**Bold?**_, _underlined_, *Italic?*
