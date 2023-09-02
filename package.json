@@ -17,6 +17,7 @@
     "@astrojs/mdx": "^1.0.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/ts-plugin": "^1.1.3",
     "astro": "^3.0.7"
   },
   "devDependencies": {
