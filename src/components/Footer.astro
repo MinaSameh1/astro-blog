@@ -1,13 +1,41 @@
 ---
+import { GITHUB_URL, LINKEDIN_URL } from "@src/consts";
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Mina Sameh Wadie. All rights reserved.
+  &copy; {today.getFullYear()} Mina Sameh Wadie. All rights reserved.
+  <br />
+  Built with <a href="https://astro.build/">Astro</a>.
+  <!-- <p> -->
+  <!--   <a href={LINKEDIN_URL}>LinkedIn</a> |{" "} -->
+  <!--   <a href={GITHUB_URL}>GitHub</a> -->
+  <!-- </p> -->
+
+  <style>
+    /*
+    footer a {
+    }
+    */
+
+    footer {
+      /* background-color: orange; */
+      position: absolute;
+      border-top: 1px solid #eaeaea;
+      left: 0;
+      bottom: 0;
+      height: 50px;
+      width: 100%;
+      padding: 25px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        position: relative;
+        margin-top: 50px;
+        padding: 25px 0;
+      }
+    }
+  </style>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>
