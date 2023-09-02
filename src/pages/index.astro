@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, LINKEDIN_URL } from "../consts";
 ---
 
 <!DOCTYPE html>
@@ -28,7 +28,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         I mostly write about Nodejs, Typescript, and other backend related
         stuff. Sometimes I also write about React and other frontend stuff.
       </p>
-      <p>If you want to talk send me an email or a dm on Linkedin.</p>
+      <p>
+        If you want to talk send me an email or a dm on <a href={LINKEDIN_URL}
+          >Linkedin</a
+        >.
+      </p>
       <!-- <p> 
         This template comes with a few integrations already configured in your
         <code>astro.config.mjs</code> file. You can customize your setup with
