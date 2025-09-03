@@ -1,12 +1,18 @@
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import { BASE_URL } from "./src/consts";
-import mdx from "@astrojs/mdx";
-
-import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.minasameh.dev/",
   base: BASE_URL,
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind({
+      config: { path: "./tailwind.config.js" },
+    }),
+  ],
 });

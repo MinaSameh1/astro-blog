@@ -1,4 +1,196 @@
 ---
-// TODO: Look into https://github.com/manuelernestog/astrofy
-// import { Skills, Projects } from '@src/content/portfolio'
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { CONFIG } from "../config";
+import "../styles/global.css";
 ---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Portfolio"
+      description="Explore my projects and work in backend development, APIs, and system architecture."
+    />
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="relative bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20"
+      >
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <h1
+            class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
+          >
+            My Portfolio
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            A collection of projects showcasing my work in backend development
+            and system architecture
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects Grid -->
+      <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              CONFIG.projects.map((project) => (
+                <div class="card group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    {project.title}
+                  </h3>
+
+                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <span class="px-3 py-1 bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 text-sm rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="flex gap-3">
+                    {project.link && (
+                    <a
+                      href={project.link}
+                      class="btn btn-primary px-4 py-2 text-sm flex-1 text-center"
+                    >
+                      View Project
+
+                    </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary px-4 py-2 text-sm"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Additional Projects Section -->
+      <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            More Projects Coming Soon
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            I'm constantly working on new projects and learning new
+            technologies. Check back soon for more updates!
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card text-center">
+              <div
+                class="h-16 w-16 mx-auto mb-4 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center"
+              >
+                <svg
+                  class="h-8 w-8 text-primary-600 dark:text-primary-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+              >
+                Performance Optimization
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Working on tools and techniques to improve application
+                performance
+              </p>
+            </div>
+
+            <div class="card text-center">
+              <div
+                class="h-16 w-16 mx-auto mb-4 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center"
+              >
+                <svg
+                  class="h-8 w-8 text-primary-600 dark:text-primary-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+              >
+                Looking at new Frameworks and work processes
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300">
+                Building and experimenting with various personal and side projects
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            Let's Connect!
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            Interested in talking or collaborating? Feel free to reach out!
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:mina@minasameh.dev"
+              class="btn btn-primary px-8 py-3 text-lg font-semibold"
+            >
+              Get In Touch
+            </a>
+            <a
+              href="/about"
+              class="btn btn-secondary px-8 py-3 text-lg font-semibold"
+            >
+              Learn More About Me
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
