@@ -1,6 +1,10 @@
 {
-  "extends": ["plugin:astro/recommended"],
-  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:astro/recommended",
+    "plugin:prettier/recommended"
+  ],
   "overrides": [
     {
       "files": ["*.astro"],
@@ -8,8 +12,7 @@
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "extraFileExtensions": [".astro"]
-      },
-      "rules": {}
+      }
     }
   ]
 }

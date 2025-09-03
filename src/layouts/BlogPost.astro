@@ -1,51 +1,143 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
 
-type Props = CollectionEntry<"blog">["data"];
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: string;
+  hide?: boolean;
+}
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, hide } =
+  Astro.props;
+
+if (hide) {
+  return null;
+}
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
-    <style>
-      .title {
-        font-size: 2em;
-        margin: 0.25em 0 0;
-      }
-      hr {
-        border-top: 1px solid #ddd;
-        margin: 1rem 0;
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
+    <BaseHead
+      title={title}
+      description={description}
+      image={heroImage}
+      type="article"
+    />
   </head>
-
   <body>
     <Header />
+
     <main>
-      <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-        <h1 class="title">{title}</h1>
-        <FormattedDate date={pubDate} />
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
+      <!-- Hero Section -->
+      <section
+        class="relative bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20"
+      >
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <div class="mb-6">
+            <time
+              datetime={pubDate.toISOString()}
+              class="text-sm text-primary-600 dark:text-primary-400 font-medium"
+            >
+              <FormattedDate date={pubDate} />
+            </time>
+            {
+              updatedDate && (
+                <span class="ml-3 text-xs bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 px-3 py-1 rounded-full">
+                  Updated <FormattedDate date={updatedDate} />
+                </span>
+              )
+            }
+          </div>
+
+          <h1
+            class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl"
+          >
+            {title}
+          </h1>
+
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            {description}
+          </p>
+        </div>
+      </section>
+
+      <!-- Article Content -->
+      <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="mx-auto max-w-4xl px-4">
+          <article
+            class="prose prose-lg prose-gray max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-code:text-gray-900 dark:prose-code:text-gray-100 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-700"
+          >
+            <slot />
+          </article>
+
+          <!-- Article Footer -->
+          <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <div
+                  class="h-12 w-12 rounded-full bg-primary-600 flex items-center justify-center"
+                >
+                  <span class="text-white font-bold text-lg">M</span>
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">
+                    Mina Sameh
+                  </p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Backend Developer
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex space-x-3">
+                <a
+                  href="https://twitter.com/intent/tweet?text=Check out this article: {title}&url={Astro.url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary px-4 py-2 text-sm"
+                >
+                  Share on Twitter
+                </a>
+                <a
+                  href="https://www.linkedin.com/sharing/share-offsite/?url={Astro.url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary px-4 py-2 text-sm"
+                >
+                  Share on LinkedIn
+                </a>
+              </div>
             </div>
-          )
-        }
-        <hr />
-        <slot />
-      </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Posts Section -->
+      <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            More Articles
+          </h2>
+
+          <div class="text-center">
+            <a
+              href="/blog"
+              class="btn btn-primary px-8 py-3 text-lg font-semibold"
+            >
+              View All Posts
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
+
     <Footer />
   </body>
 </html>

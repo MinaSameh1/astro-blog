@@ -1,22 +1,191 @@
 ---
-import { LINKEDIN_URL } from "@src/consts";
-import Layout from "../layouts/BlogPost.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { CONFIG } from "../config";
+import "../styles/global.css";
 ---
 
-<Layout
-  title="About Me"
-  description="Who am I"
-  pubDate={new Date("Saturday 03 31 2023")}
-  updatedDate={new Date("Saturday 03 31 2023")}
-  heroImage="/placeholder-about.jpg"
->
-  <p>
-    I am a programmer that is interested in all things web. I decided to start
-    this blog to increase my experience, learn and share knowledge I learned.
-  </p>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="About"
+      description="Learn more about Mina Sameh, a backend developer passionate about building scalable and efficient systems."
+    />
+  </head>
+  <body>
+    <Header />
 
-  <p>
-    Feel Free to shoot me a message on <a href={LINKEDIN_URL}>linkedin</a> if you
-    want to talk.
-  </p>
-</Layout>
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="relative bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20"
+      >
+        <div class="mx-auto max-w-4xl px-4 text-center">
+          <h1
+            class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
+          >
+            About Me
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Backend developer passionate about building scalable and efficient
+            systems
+          </p>
+        </div>
+      </section>
+
+      <!-- About Content -->
+      <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="mx-auto max-w-4xl px-4">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- Profile Image -->
+            <div class="lg:col-span-1">
+              <div class="sticky top-24">
+                <div
+                  class="aspect-square bg-gray-200 dark:bg-gray-700 rounded-2xl overflow-hidden mb-6"
+                >
+                  <img
+                    src="/personal.jpg"
+                    alt="Mina Sameh"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-white"
+                  >
+                    Get in Touch
+                  </h3>
+                  <div class="space-y-3">
+                    {
+                      CONFIG.socials.map((social) => (
+                        <a
+                          href={social.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="flex items-center space-x-3 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors duration-200"
+                        >
+                          <svg
+                            class="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            {social.icon === "mdi:github" && (
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            )}
+                            {social.icon === "mdi:linkedin" && (
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            )}
+                            {social.icon === "mdi:email" && (
+                              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            )}
+                          </svg>
+                          <span>{social.text}</span>
+                        </a>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div
+              class="lg:col-span-2 prose prose-lg prose-gray max-w-none dark:prose-invert"
+            >
+              <h2>Hello! I'm Mina Sameh</h2>
+
+              <p>
+                I'm a backend developer from Egypt with a passion for building
+                scalable and efficient systems. I specialize in Node.js, Python,
+                and various database technologies, always striving to write
+                clean, maintainable code that solves real-world problems.
+              </p>
+
+              <h3>My Journey</h3>
+
+              <p>
+                My journey in software development began with a curiosity about
+                how things work behind the scenes. I started with desktop applications
+                but quickly discovered my passion for backend
+                systems, APIs, and the infrastructure that powers modern
+                applications.
+              </p>
+
+              <p>
+                Over the years, I've worked on various projects ranging from
+                simple REST APIs to complex microservices architectures. I
+                believe in continuous learning and staying up-to-date with the
+                latest technologies and best practices in the industry.
+              </p>
+
+              <h3>What I Do</h3>
+
+              <p>
+                I focus on building robust backend systems that can handle scale
+                and complexity. My expertise includes:
+              </p>
+
+              <ul>
+                <li>Designing and implementing RESTful APIs</li>
+                <li>Building microservices architectures</li>
+                <li>Database design and optimization</li>
+                <li>Performance tuning and monitoring</li>
+                <li>DevOps and deployment automation</li>
+                <li>Security best practices</li>
+              </ul>
+
+              <h3>Technologies I Work With</h3>
+
+              <p>
+                I'm proficient in a variety of technologies and always eager to
+                learn new ones:
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">Backend</h4>
+                  <ul class="space-y-1">
+                    <li>Node.js & Express</li>
+                    <li>Python & FastAPI</li>
+                    <li>TypeScript</li>
+                    <li>GraphQL</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">Databases</h4>
+                  <ul class="space-y-1">
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>Redis</li>
+                    <li>Algolia</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3>Beyond Code</h3>
+
+              <p>
+                When I'm not coding, you can find me reading about new
+                technologies, contributing to open source projects, or trying to share
+                my knowledge. I
+                believe in the power of community and knowledge sharing in our
+                field.
+              </p>
+
+              <p>
+                I'm always interested in new opportunities and collaborations.
+                If you'd like to work together or just want to chat about
+                technology, feel free to reach out!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
