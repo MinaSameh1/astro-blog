@@ -3,170 +3,54 @@ import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import BlogList from "../../components/BlogList.astro";
 import "../../styles/global.css";
 
 const posts = await getCollection("blog");
-const sortedPosts = posts.sort(
-  (a, b) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b?.data?.pubDate).getTime() - new Date(a?.data?.pubDate).getTime()
 );
+
 ---
 
 <html lang="en">
   <head>
-    <BaseHead
-      title="Blog"
-      description="Read my thoughts on technology, development, and anything that catches my eye."
-    />
+    <BaseHead title="Blog" description="Read my thoughts on technology, development, and anything that catches my eye." />
   </head>
   <body>
     <Header />
-
     <main>
-      <!-- Hero Section -->
-      <section
-        class="relative bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20"
-      >
+      <!-- Hero -->
+      <section class="relative bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20">
         <div class="mx-auto max-w-4xl px-4 text-center">
-          <h1
-            class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
-          >
-            Blog
-          </h1>
+          <h1 class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">Blog</h1>
           <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Thoughts and insights on technology, development, and anything that
-            catches my eye
+            Thoughts and insights on technology, development, and anything that catches my eye
           </p>
         </div>
       </section>
 
-      <!-- Blog Posts Grid -->
+      <!-- Grid -->
       <section class="py-20 bg-white dark:bg-gray-900">
         <div class="mx-auto max-w-6xl px-4">
-          {
-            sortedPosts.length > 0 ? (
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {sortedPosts.map((post) => (
-                  <article class="card group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                      {post.data.heroImage ? (
-                        <img
-                          src={post.data.heroImage}
-                          alt={post.data.title}
-                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div class="w-full h-full flex items-center justify-center">
-                          <svg
-                            class="h-16 w-16 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                            />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-
-                    <div class="flex-1">
-                      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                        {post.data.title}
-                      </h2>
-
-                      <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                        {post.data.description}
-                      </p>
-
-                      <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
-                        <time datetime={post.data.pubDate.toISOString()}>
-                          {post.data.pubDate.toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </time>
-                        {post.data.updatedDate && (
-                          <span class="text-xs bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 px-2 py-1 rounded-full">
-                            Updated
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <a
-                      href={`/blog/${post.slug}`}
-                      class="btn btn-primary w-full text-center"
-                    >
-                      Read More
-                    </a>
-                  </article>
-                ))}
+          {sortedPosts.length > 0 ? (
+              <BlogList posts={sortedPosts} />
+          ) : (
+            <div class="text-center py-20">
+              <div class="h-24 w-24 mx-auto mb-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                <svg class="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
               </div>
-            ) : (
-              <div class="text-center py-20">
-                <div class="h-24 w-24 mx-auto mb-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                  <svg
-                    class="h-12 w-12 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  No blog posts yet
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  I'm working on some great content. Check back soon!
-                </p>
-              </div>
-            )
-          }
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No blog posts yet</h3>
+              <p class="text-gray-600 dark:text-gray-300">I'm working on some great content. Check back soon!</p>
+            </div>
+          )}
         </div>
       </section>
-
-      <!-- TODO: Newsletter Section -->
-      <!-- <section class="py-20 bg-gray-50 dark:bg-gray-800"> -->
-      <!--   <div class="mx-auto max-w-4xl px-4 text-center"> -->
-      <!--     <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6"> -->
-      <!--       Stay Updated -->
-      <!--     </h2> -->
-      <!--     <p class="text-lg text-gray-600 dark:text-gray-300 mb-8"> -->
-      <!--       Get notified when I publish new articles about technology and -->
-      <!--       development. -->
-      <!--     </p> -->
-      <!---->
-      <!--     <div class="max-w-md mx-auto"> -->
-      <!--       <div class="flex gap-3"> -->
-      <!--         <input -->
-      <!--           type="email" -->
-      <!--           placeholder="Enter your email" -->
-      <!--           class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" -->
-      <!--         /> -->
-      <!--         <button class="btn btn-primary px-6 py-3 whitespace-nowrap"> -->
-      <!--           Subscribe -->
-      <!--         </button> -->
-      <!--       </div> -->
-      <!--       <p class="text-xs text-gray-500 dark:text-gray-400 mt-2"> -->
-      <!--         No spam, unsubscribe at any time. -->
-      <!--       </p> -->
-      <!--     </div> -->
-      <!--   </div> -->
-      <!-- </section> -->
     </main>
-
     <Footer />
   </body>
 </html>
